@@ -24,9 +24,9 @@ namespace Walutomat
             this.amount += addent;
         }
 
-        public void times(int multiplier)
+        public Money times(int multiplier)
         {
-            this.amount *= multiplier;
+            return new Money(amount*multiplier, currency);
         }
 
         public override bool Equals(object object_)

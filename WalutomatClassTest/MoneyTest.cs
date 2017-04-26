@@ -15,9 +15,13 @@ namespace WalutomatClassTest
         public void AddTest()
         {
             Money m = new Money(2, "USD");
-            m.Add(1);
             Assert.AreEqual(m, new Money(2, "USD"));   
   
+        }
+        [Test]
+        public void TestEquality()
+        {
+            
         }
     }
 }
