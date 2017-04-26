@@ -18,10 +18,15 @@ namespace WalutomatClassTest
             Assert.AreEqual(m, new Money(2, "USD"));   
   
         }
+
         [Test]
         public void TestEquality()
         {
-            
+            Assert.True(Money.dolar(5).Equals(Money.dolar(5)));
+            Assert.False(Money.dolar(5).Equals(Money.dolar(6)));
+            Assert.False(Money.franc(5).Equals(Money.dolar(5)));
         }
+
+
     }
 }

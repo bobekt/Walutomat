@@ -35,6 +35,15 @@ namespace Walutomat
             return m.amount == this.amount && m.currency == this.currency;
         }
 
-        
+        static public Money dolar(int amount)
+        {
+            return new Money(amount, "USD");
+        }
+
+        static public Money franc(int amount)
+        {
+            return new Money(amount, "CHF");
+        }
+
     }
 }
