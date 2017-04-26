@@ -9,27 +9,29 @@ namespace Walutomat
     
     public class Money
     {
-        private int amount;
-        private string currency;
+        protected int amount;
+        protected string currency;
         public Money(int amount, string currency)
         {
             this.amount = amount;
             this.currency = currency;
         }
 
-        public void Add(int addent)
+
+
+        public void add(int addent)
         {
             this.amount += addent;
         }
 
-        public void Times(int multiplier)
+        public void times(int multiplier)
         {
             this.amount *= multiplier;
         }
 
-        public override bool Equals(object o)
+        public override bool Equals(object object_)
         {
-            Money m = (Money)o;
+            Money m = (Money)object_;
             return m.amount == this.amount && m.currency == this.currency;
         }
 
