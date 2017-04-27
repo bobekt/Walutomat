@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Walutomat
 {
     
-    public class Money
+    public class Money : IExpression
     {
         protected int amount;
         protected string currency;
@@ -19,9 +19,9 @@ namespace Walutomat
 
 
 
-        public void add(int addent)
+        public IExpression plus(Money addentMoney)
         {
-            this.amount += addent;
+            return new Money(addentMoney.amount + this.amount, this.currency);
         }
 
         public Money times(int multiplier)
@@ -35,7 +35,7 @@ namespace Walutomat
             return m.amount == this.amount && m.currency == this.currency;
         }
 
-        static public Money dolar(int amount)
+        static public Money dollar(int amount)
         {
             return new Money(amount, "USD");
         }
