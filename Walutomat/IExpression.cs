@@ -8,5 +8,6 @@ namespace Walutomat
 {
     public interface IExpression
     {
+        Money reduce(string to);
     }
 }

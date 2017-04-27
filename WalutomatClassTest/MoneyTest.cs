@@ -29,6 +29,33 @@ namespace WalutomatClassTest
         }
 
         [Test]
+        public void TestPlusReturnSum()
+        {
+            Money five = Money.dollar(5);
+            IExpression result = five.plus(five);
+            Sum sum = (Sum)result;
+            Assert.AreEqual(five, sum.augend);
+            Assert.AreEqual(five, sum.addend);
+        }
+
+        [Test]
+        public void TestReduceSum()
+        {
+            IExpression sum = new Sum(Money.dollar(3), Money.dollar(4));
+            Bank bank = new Bank();
+            Money result = bank.reduce(sum, "USD");
+            Assert.AreEqual(Money.dollar(7), result);
+        }
+
+        [Test]
+        public void TestReduceMoney()
+        {
+            Bank bank = new Bank();
+            Money result = bank.reduce(Money.dollar(1), "USD");
+            Assert.AreEqual(Money.dollar(1), result);
+        }
+
+        [Test]
         public void TestEquality()
         {
             Assert.True(Money.dollar(5).Equals(Money.dollar(5)));

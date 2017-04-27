@@ -10,7 +10,7 @@ namespace Walutomat
     {
         public Money reduce(IExpression source, string to)
         {
-            return Money.dollar(10);
+            return source.reduce(to);
         }
     }
 }

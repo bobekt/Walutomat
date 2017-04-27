@@ -9,7 +9,7 @@ namespace Walutomat
     
     public class Money : IExpression
     {
-        protected int amount;
+        public int amount;
         protected string currency;
         public Money(int amount, string currency)
         {
@@ -17,11 +17,14 @@ namespace Walutomat
             this.currency = currency;
         }
 
-
-
-        public IExpression plus(Money addentMoney)
+        public Money reduce(string to)
         {
-            return new Money(addentMoney.amount + this.amount, this.currency);
+            return this;
+        }    
+    
+        public IExpression plus(Money addend)
+        {
+            return new Sum(this, addend);
         }
 
         public Money times(int multiplier)
