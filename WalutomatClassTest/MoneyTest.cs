@@ -11,6 +11,24 @@ namespace WalutomatClassTest
     [TestFixture]
     public class MoneyTest
     {
+
+        [Test]
+        public void TestReduceSum()
+        {
+            IExpression sum = new Sum(Money.dollar(3), Money.dollar(4));
+            Bank bank = new Bank();
+            Money result = bank.reduce(sum, "USD");
+            Assert.AreEqual(Money.dollar(7), result);
+        }
+
+        [Test]
+        public void TestReduceMoney()
+        {
+            Bank bank = new Bank();
+            Money result = bank.reduce(Money.dollar(1), "USD");
+            Assert.AreEqual(Money.dollar(1), result);
+        }
+
         [Test]
         public void AddTest()
         {
@@ -26,6 +44,16 @@ namespace WalutomatClassTest
             Bank bank = new Bank();
             Money reduced = bank.reduce(sum, "USD");
             Assert.AreEqual(Money.dollar(10), reduced);
+        }
+
+        [Test]
+        public void TestPlusReturnSum()
+        {
+            Money five = Money.dollar(5);
+            IExpression result = five.plus(five);
+            Sum sum = (Sum)result;
+            Assert.AreEqual(five, sum.augend);
+            Assert.AreEqual(five, sum.addend);
         }
 
         [Test]
